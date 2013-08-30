@@ -6,10 +6,6 @@
   <h4>Memory Leak Demo 1</h4>
 
   <script type="text/javascript">
-var numberCache;
-var stringCache;
-var documentCache;
-
 	function Item(x) {
 	  this.x = x;
 	}
@@ -29,10 +25,12 @@ var documentCache;
 	}
 
 	function init() {
-	  numberCache = numbers();
-	  stringCache = strings();
-	  documentCache = new Item(document.body.textContent.toLowerCase());
+	  window.numberCache = numbers();
+	  window.stringCache = strings();
+	  window.documentCache = new Item(document.body.textContent.toLowerCase());
 	}
+
+	init();
   </script>
 </body>
 </html>
