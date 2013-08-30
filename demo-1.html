@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <h4>Memory Leak Demo 1</h4>
+
+  <script type="text/javascript">
+var numberCache;
+var stringCache;
+var documentCache;
+
+	function Item(x) {
+	  this.x = x;
+	}
+
+	function numbers() {
+	  var result = new Array(10000);
+	  for (var i = 0, l = result.length; i < l; ++i)
+	    result[i] = new Item(i);
+	  return new Item(result);
+	}
+
+	function strings() {
+	  var result = new Array(10000);
+	  for (var i = 0, l = result.length; i < l; ++i)
+	    result[i] = new Item(i.toString());
+	  return new Item(result);
+	}
+
+	function init() {
+	  numberCache = numbers();
+	  stringCache = strings();
+	  documentCache = new Item(document.body.textContent.toLowerCase());
+	}
+  </script>
+</body>
+</html>
